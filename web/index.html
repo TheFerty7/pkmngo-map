@@ -210,13 +210,18 @@
 
              var team = getTeamFromNum(p.team);
              var image = "./img/forts/"+team+".png";
+             var pokecon = {
+               anchor: new google.maps.Point(20,20),
+               url: image,
+               size: new google.maps.Size(40,40)
+             };
 
              var marker = new google.maps.Marker({
                map: map,
                position: {lat: p.lat, lng: p.lng},
                label: "",
                details: "<b>"+team+" Gym</b><br>Points: " + p.points + "<br>Lat: "+p.lat+"<br>Long: "+p.lng + "<br>Guard: " + p.guard,
-               icon: image
+               icon: pokecon
              });
 
              var listenerPair = [
@@ -270,12 +275,18 @@
              var image = "./img/forts/Pstop"+lure+".png";
              var detail_str = "<b>Pokestop "+lure+"</b><br>" + (p.timeleft>0? "Lure timeleft: "+p.timeleft+"<br>":"") + "Lat: "+p.lat+"<br>Long: "+p.lng;
 
+             var pokecon = {
+               anchor: new google.maps.Point(10,10),
+               url: image,
+               size: new google.maps.Size(20,20)
+             };
+
              var marker = new google.maps.Marker({
                map: map,
                position: {lat: p.lat, lng: p.lng},
                label: "",
                details: detail_str,
-               icon: image
+               icon: pokecon
              });
 
              var listenerPair = [
@@ -347,14 +358,20 @@
                 var infowindow = new google.maps.InfoWindow({
                 });
 
-                var image = getImage(p);
+                //var image = getImage(p);
+                var pokecon = {
+                  anchor: new google.maps.Point(36,36),
+                  url: getImage(p),
+                  size: new google.maps.Size(72,72)
+                };
+
 
                 var marker = new google.maps.Marker({
                   map: map,
                   position: {lat: p.lat, lng: p.lng},
                   label: "",
                   details: detail_str,
-                  icon: image
+                  icon: pokecon // previously image
                 });
 
                 var listenerPair = [
@@ -437,7 +454,7 @@
         legend.index = 1;
         map.controls[google.maps.ControlPosition.RIGHT_TOP].push(legend);
 
-        setInterval(refreshData, 1000);
+        setInterval(refreshData, 3500);
       }
     </script>
   </body>
